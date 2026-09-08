@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>一站式广告营销投放系统需求梳理与优化建议</title>
+  <style>
+    :root {
+      --ink: #13212f;
+      --muted: #5f6b78;
+      --line: #dbe3ea;
+      --panel: #f7f9fb;
+      --accent: #0f5fff;
+      --accent-soft: #eaf1ff;
+      --ok: #138a6b;
+      --warn: #9a6700;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      color: var(--ink);
+      background: white;
+      line-height: 1.6;
+      font-size: 13px;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 18mm 16mm 16mm;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    .hero {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .section {
+      margin-top: 16px;
+      break-inside: avoid;
+    }
+
+    .section h2 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      padding-left: 8px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .section h3 {
+      font-size: 13px;
+      margin: 10px 0 6px;
+      color: var(--ink);
+    }
+
+    .lead {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 12px;
+      color: var(--ink);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .box {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: white;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-right: 6px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      vertical-align: middle;
+    }
+
+    ul {
+      margin: 6px 0 0 18px;
+      padding: 0;
+    }
+
+    li { margin: 4px 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 8px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f2f6fa;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 8px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--ok);
+      background: #f4fbf8;
+      padding: 10px 12px;
+      border-radius: 4px;
+    }
+
+    .warn {
+      border-left-color: var(--warn);
+      background: #fff9ef;
+    }
+
+    @page {
+      size: A4;
+      margin: 14mm 12mm;
+    }
+
+    @media print {
+      .page {
+        width: auto;
+        min-height: auto;
+        padding: 0;
+      }
+      body { font-size: 12px; }
+      .box, .lead, .callout, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="title">一站式广告营销投放系统</div>
+      <div class="subtitle">需求梳理、功能串联与优化建议</div>
+    </header>
+
+    <section class="section">
+      <h2>1. 目标定义</h2>
+      <div class="lead">
+        该系统的核心目标不是单纯“做广告”，而是把“投放前配置、素材管理、创意生成、审核发布、投放监控、效果分析、组织协作”连成一条闭环，支撑代理商、运营、投放、设计、分析等多角色协同。
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. 业务主链路</h2>
+      <div class="grid">
+        <div class="box">
+          <span class="tag">上游</span>
+          <strong>组织与权限</strong>
+          <ul>
+            <li>租户 / 公司 / 代理商 / 客户层级</li>
+            <li>角色权限：管理员、运营、投放、设计、分析、只读</li>
+            <li>审计日志：谁在什么时候改了什么</li>
+          </ul>
+        </div>
+        <div class="box">
+          <span class="tag">中游</span>
+          <strong>投放配置与发布</strong>
+          <ul>
+            <li>项目管理、账号接入、预算配置</li>
+            <li>素材上传、标题包、逻辑页、创意组合</li>
+            <li>广告预览、审核、创建、发布、暂停、重提</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid" style="margin-top:10px;">
+        <div class="box">
+          <span class="tag">下游</span>
+          <strong>投放监测与优化</strong>
+          <ul>
+            <li>曝光、点击、消耗、转化、CPA、ROAS</li>
+            <li>预算预警、异常波动、素材失效提醒</li>
+            <li>按项目、账户、渠道、创意多维分析</li>
+          </ul>
+        </div>
+        <div class="box">
+          <span class="tag">协同</span>
+          <strong>代理商与运营协作</strong>
+          <ul>
+            <li>任务分发、备注、审批、消息通知</li>
+            <li>多团队协同查看同一项目</li>
+            <li>沉淀标准化投放模板</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>3. 功能模块建议</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:18%">模块</th>
+            <th>建议能力</th>
+            <th style="width:22%">优先级</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>基础底座</td>
+            <td>组织、角色、权限、审计、消息</td>
+            <td>高</td>
+          </tr>
+          <tr>
+            <td>账户中心</td>
+            <td>广告账户接入、余额、预算、渠道配置</td>
+            <td>高</td>
+          </tr>
+          <tr>
+            <td>项目中心</td>
+            <td>按客户 / 活动 / 业务线管理投放项目</td>
+            <td>高</td>
+          </tr>
+          <tr>
+            <td>素材中心</td>
+            <td>图片、视频、文案、标题包、标签、版本、复用</td>
+            <td>高</td>
+          </tr>
+          <tr>
+            <td>创意工作台</td>
+            <td>广告内容配置、逻辑页、广告预览、组合生成</td>
+            <td>高</td>
+          </tr>
+          <tr>
+            <td>审核发布</td>
+            <td>草稿、待审、驳回、已发布、已暂停、回滚</td>
+            <td>中高</td>
+          </tr>
+          <tr>
+            <td>数据中心</td>
+            <td>大屏、趋势图、消耗分析、转化分析、异常告警</td>
+            <td>高</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>4. 你现有需求的补全点</h2>
+      <div class="box">
+        <ul>
+          <li>补“审核流”，否则创意从配置到上线会断层。</li>
+          <li>补“素材治理”，否则素材多了以后会失控，重复上传、版本混乱、难复用。</li>
+          <li>补“多平台适配”，因为不同渠道的广告字段、规格、限制不一样。</li>
+          <li>补“操作留痕与回滚”，投放系统很怕误操作，必须可追踪、可撤销。</li>
+          <li>补“数据告警”，只看大屏不够，要能主动提醒异常消耗和效果下滑。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>5. 分期建议</h2>
+      <div class="grid">
+        <div class="callout">
+          <strong>一期：先打通闭环</strong>
+          <ul>
+            <li>素材中心</li>
+            <li>创意工作台</li>
+            <li>账号 / 项目 / 广告对象关系</li>
+            <li>基础数据看板</li>
+          </ul>
+        </div>
+        <div class="callout warn">
+          <strong>二期：提升协同与治理</strong>
+          <ul>
+            <li>审核流</li>
+            <li>权限体系</li>
+            <li>操作日志</li>
+            <li>素材版本与复用</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6. 推荐的产品表达方式</h2>
+      <div class="lead">
+        建议你把产品定义成“投放中台 + 素材中台 + 数据中台”的组合，而不是单一广告创建工具。这样后续无论是接入更多平台、更多代理商，还是扩展自动化投放、智能推荐，都有空间。
+      </div>
+      <div class="note">文档版本：v1.0</div>
+    </section>
+  </main>
+</body>
+</html>
